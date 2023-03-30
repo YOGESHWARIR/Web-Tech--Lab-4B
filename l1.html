@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<script>
+		function validate() {
+			var a = document.myform.name.value;
+			if (a == "") {
+				alert("Name is empty");
+				document.myform.name.focus();
+				return false;
+			}
+			if (!isNaN(a)) {
+				alert("Enter the characters only");
+				document.myform.name.select();
+				return false;
+			}
+
+			var d = document.myform.mail.value;
+			if (d == "") {
+				alert("Please, Enter a valid mail id!!!");
+				document.myform.mail.focus();
+				return false;
+			}
+			var atposition = d.indexOf("@");
+			var dotposition = d.lastIndexOf(".");
+			if (atposition < 1 || dotposition < atposition + 2 || dotposition + 2 >= d.length) {
+				alert("Please enter valid mail address!!!!");
+				return false;
+			}
+
+			var p = document.myform.pass.value;
+			if (p == "") {
+				alert("Please, Enter your password!!!");
+				document.myform.pass.focus();
+				return false;
+			}
+			var cp = document.myform.cpass.value;
+			if (cp == "") {
+				alert("Please, Enter your password!!!");
+				document.myform.cpass.focus();
+				return false;
+			}
+			if (p != cp) {
+				alert("Password not matched please enter correct one!!!!");
+				document.myform.cpass.focus();
+				return false;
+			}
+
+			var m = document.myform.mno.value;
+			if (m == "") {
+				alert("Please, Enter your moblie number!!!");
+				document.myform.mno.focus();
+				return false;
+			}
+			else if (m.length < 10 || m.length > 10) {
+				alert("Please enter only 10 digits!");
+				document.myform.mno.focus();
+				return false;
+			}
+
+			var rb = document.myform.gender;
+			var status = 0;
+			for (var i = 0; i < rb.length; i++) {
+				if (rb[i].checked == true) {
+					status = 1;
+				}
+			}
+			if (status == 0) {
+				alert("Select gender");
+				return false;
+			}
+
+			var interest = document.myform.course;
+			if (interest.selectedIndex == 0) {
+				alert("Select the course of your choice");
+				document.myform.course.focus();
+				return false;
+			}
+
+
+			return true;
+		}
+	</script>
+<style>
+	body {
+	  background-image: url("https://images.unsplash.com/photo-1625225230517-7426c1be750c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fGZvcm18ZW58MHx8MHx8&w=1000&q=80");
+	}
+	</style>
+
+
+
+
+	<title>SIGN-UP Page</title>
+	<link rel = "icon" href = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0g2vzEXtsQiHn4jF--S9EVlkck5r4xPJY4A&usqp=CAU"  type = "image/x-icon">
+</head>
+
+<body style="background-color: rgb(196, 255, 222);">
+	<div>
+		<center>
+			<h2>REGISTRATION FORM</h2>
+			<form action="action.html" name="myform" onsubmit="return validate()">
+            <br><br>
+				<div>
+					<label for="Username">Username:</label>
+					<input type="text" id="name" name="name" placeholder="Enter your username">
+				</div> <br>
+				<div>
+					<label for="Mailid">Email :</label>
+					<input type="text" id="mail" name="mail" placeholder="Enter a E-mail address">
+				</div> <br>
+				<div>
+					<label for="password">Password:</label>
+					<input type="password" id="pw" name="pass" placeholder="Enter a password">
+				</div> <br>
+				<div>
+					<label for="cpassword">Confirm Password:</label>
+					<input type="password" id="cpw" name="cpass" placeholder="Retype the password">
+				</div> <br>
+				<div>
+					<label for="mno">Mobile number:</label>
+					<input type="text" id="mno" name="mno" placeholder="Mobile Number">
+				</div> <br>
+				<div>
+					<label for="gender">Gender:</label> <br>
+					<input type="radio" id="gender" name="gender">
+					<label for="male">Male</label> <br>
+					<input type="radio" id="gender" name="gender">
+					<label for="female">Female</label> <br>
+					<input type="radio" id="gender" name="gender">
+					<label for="others">Others</label> <br>
+				</div> <br>
+				<div>
+					<label for="course">Select course:</label> <br>
+					<select type="text" name="course" id="course">
+						<option></option>
+						<option value="EMOTIONAL INTELLIGENCE">EMOTIONAL INTELLIGENCE</option>
+						<option value="ETHICAL HACKING">ETHICAL HACKING</option>
+						<option value="PROGRAMMING IN MODERN C++">PROGRAMMING IN MODERN C++</option>
+						<option value="PRIVACY AND SECURITY IN ONLINE SOCIAL MEDIA">PRIVACY AND SECURITY IN ONLINE
+							SOCIAL MEDIA</option>
+						<option value="DISCRETE MATHEMATICS">DISCRETE MATHEMATICS</option>
+					</select>
+				</div> <br>
+
+
+				<div>
+					<input type="submit" id="sub" name="sub">
+				</div> <br>
+			</form>
+		</center>
+
+
+	</div>
+</body>
+
+</html>
